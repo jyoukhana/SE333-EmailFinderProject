@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ListWriter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">email-finder</a> &gt; <a href="index.source.html" class="el_package">edu.depaul.email</a> &gt; <span class="el_source">ListWriter.java</span></div><h1>ListWriter.java</h1><pre class="source lang-java linenums">/*
+ * Assignment: class project
+ * Topic: demonstrate a variety of tests
+ * Author: Dan Walker
+ */
+package edu.depaul.email;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Collection;
+
+/**
+ * Writes a given list to an output stream.  Each element is written to
+ * a new line.
+ */
+public class ListWriter {
+
+  private final OutputStream output;
+<span class="fc" id="L19">  private byte[] newLine = {'\n'};</span>
+
+<span class="fc" id="L21">  public ListWriter(OutputStream output) {</span>
+<span class="fc" id="L22">    this.output = output;</span>
+<span class="fc" id="L23">  }</span>
+
+  public void writeList(Collection&lt;String&gt; aList) throws IOException {
+<span class="fc bfc" id="L26" title="All 2 branches covered.">    for (String item : aList) {</span>
+<span class="fc" id="L27">      output.write(item.getBytes());</span>
+<span class="fc" id="L28">      output.write(newLine);</span>
+<span class="fc" id="L29">    }</span>
+<span class="fc" id="L30">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

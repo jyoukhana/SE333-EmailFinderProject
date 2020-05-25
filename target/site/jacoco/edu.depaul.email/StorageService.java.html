@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StorageService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">email-finder</a> &gt; <a href="index.source.html" class="el_package">edu.depaul.email</a> &gt; <span class="el_source">StorageService.java</span></div><h1>StorageService.java</h1><pre class="source lang-java linenums">/*
+ * Assignment: class project
+ * Topic: demonstrate a variety of tests
+ * Author: Dan Walker
+ */
+package edu.depaul.email;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Encapsulates storage handling so that we can use a variety of services.  The
+ * initial implementation just uses the file system.
+ */
+<span class="fc" id="L18">public class StorageService {</span>
+
+<span class="fc" id="L20">  public enum StorageType {EMAIL, GOODLINKS, BADLINKS};</span>
+
+<span class="fc" id="L22">  private Map&lt;StorageType, String&gt; locations = new HashMap&lt;&gt;();</span>
+
+  public StorageService addLocation(StorageType key, String location) {
+
+<span class="fc" id="L26">    locations.put(key, location);</span>
+<span class="fc" id="L27">    return this;</span>
+  }
+
+  public void storeList(StorageType handle, Collection&lt;String&gt; aList) {
+<span class="fc" id="L31">    String location = locations.get(handle);</span>
+
+<span class="fc" id="L33">    FileOutputStream stream = null;</span>
+    try {
+<span class="fc" id="L35">      stream = new FileOutputStream(location);</span>
+<span class="fc" id="L36">      ListWriter writer = new ListWriter(stream);</span>
+<span class="fc" id="L37">      writer.writeList(aList);</span>
+<span class="nc" id="L38">    } catch (Exception err) {</span>
+<span class="nc" id="L39">      throw new EmailFinderException(&quot;Error while write out &quot; + handle, err);</span>
+    } finally {
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">      if (stream != null) {</span>
+        try {
+<span class="fc" id="L43">          stream.close();</span>
+<span class="nc" id="L44">        } catch (IOException err) {</span>
+<span class="nc" id="L45">          throw new EmailFinderException(&quot;Error while closing output file&quot;, err);</span>
+<span class="fc" id="L46">        }</span>
+      }
+    }
+<span class="fc" id="L49">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

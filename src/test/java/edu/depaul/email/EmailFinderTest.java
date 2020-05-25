@@ -13,11 +13,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class EmailFinderTest {
 
     @Test
-    @DisplayName("Test EmailFinder output txt files with valid argument")
-    void outputTest(){
+    @DisplayName("Test EmailFinder with no URL argument")
+    void noURLTest(){
         EmailFinder testFinder = new EmailFinder();
-        String[] testArgs = {"http://cdm.depaul.edu", "30"};
+        String[] testArgs = {};
         testFinder.run(testArgs);
+        String path = "badlinks.txt";
+
+        try (Stream<String> txtLines = Files.lines(Paths.get(path))) {
+            String res = txtLines.collect(Collectors.joining(System.lineSeparator()));
+            assertEquals(res, "");
+        } catch (IOException e) {
+            throw new EmailFinderException("error", e);
+        }
     }
 
     @Test
@@ -37,18 +45,11 @@ public class EmailFinderTest {
     }
 
     @Test
-    @DisplayName("Test EmailFinder with no URL argument")
-    void noURLTest(){
+    @DisplayName("Test EmailFinder output txt files with valid argument")
+    void outputTest(){
         EmailFinder testFinder = new EmailFinder();
-        String[] testArgs = {};
+        String[] testArgs = {"http://d2l.depaul.edu", "10"};
         testFinder.run(testArgs);
-        String path = "badlinks.txt";
-
-        try (Stream<String> txtLines = Files.lines(Paths.get(path))) {
-            String res = txtLines.collect(Collectors.joining(System.lineSeparator()));
-            assertEquals(res, "");
-        } catch (IOException e) {
-            throw new EmailFinderException("error", e);
-        }
     }
+
 }

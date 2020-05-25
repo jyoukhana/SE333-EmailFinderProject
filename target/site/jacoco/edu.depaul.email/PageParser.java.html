@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PageParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">email-finder</a> &gt; <a href="index.source.html" class="el_package">edu.depaul.email</a> &gt; <span class="el_source">PageParser.java</span></div><h1>PageParser.java</h1><pre class="source lang-java linenums">/*
+ * Assignment: class project
+ * Topic: demonstrate a variety of tests
+ * Author: Dan Walker
+ */
+package edu.depaul.email;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+/**
+ * A class to parse HTML documents in order to find
+ * embedded email addresses and links to other pages
+ */
+<span class="fc" id="L20">public class PageParser {</span>
+
+  public Set&lt;String&gt; findEmails(Document doc) {
+<span class="fc" id="L23">    Pattern p = Pattern.compile(&quot;[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+&quot;);</span>
+<span class="fc" id="L24">    Matcher matcher = p.matcher(doc.text());</span>
+<span class="fc" id="L25">    Set&lt;String&gt; emails = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">    while (matcher.find()) {</span>
+<span class="fc" id="L27">      emails.add(matcher.group());</span>
+    }
+<span class="fc" id="L29">    return emails;</span>
+  }
+
+  public Set&lt;String&gt; findLinks(Document doc) {
+<span class="fc" id="L33">    Set&lt;String&gt; links = new HashSet&lt;&gt;();</span>
+
+<span class="fc" id="L35">    Elements elements = doc.select(&quot;a[href]&quot;);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">    for (Element e : elements) {</span>
+<span class="fc" id="L37">      links.add(e.attr(&quot;href&quot;));</span>
+<span class="fc" id="L38">    }</span>
+<span class="fc" id="L39">    return links;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

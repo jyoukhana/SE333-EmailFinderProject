@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PageCrawler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">email-finder</a> &gt; <a href="index.source.html" class="el_package">edu.depaul.email</a> &gt; <span class="el_source">PageCrawler.java</span></div><h1>PageCrawler.java</h1><pre class="source lang-java linenums">/*
+ * Assignment: class project
+ * Topic: demonstrate a variety of tests
+ * Author: Dan Walker
+ */
+package edu.depaul.email;
+
+import java.util.HashSet;
+import java.util.Set;
+import org.jsoup.nodes.Document;
+
+import static edu.depaul.email.StorageService.StorageType.EMAIL;
+import static edu.depaul.email.StorageService.StorageType.GOODLINKS;
+import static edu.depaul.email.StorageService.StorageType.BADLINKS;
+
+
+/**
+ * Given a starting URL string, this class finds links and email addresses
+ * on the referenced page and the recursively performs the same task on
+ * any links it finds.
+ * When the target number of emails have been found, the process write out 3
+ * results:
+ * 1. list of email addresses
+ * 2. list of URLs that were successfully processed
+ * 3. list of URLs that could not be reached
+ */
+public class PageCrawler {
+<span class="fc" id="L28">  private int maxEmails= 50;</span>
+
+  public Set&lt;String&gt; getEmails() {
+<span class="nc" id="L31">    return emails;</span>
+  }
+
+  public Set&lt;String&gt; getGoodLinks() {
+<span class="nc" id="L35">    return goodLinks;</span>
+  }
+
+  public Set&lt;String&gt; getBadLinks() {
+<span class="nc" id="L39">    return badLinks;</span>
+  }
+
+<span class="fc" id="L42">  private Set&lt;String&gt; emails = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L43">  private PageFetcher fetcher = new PageFetcher();</span>
+<span class="fc" id="L44">  private PageParser parser = new PageParser();</span>
+<span class="fc" id="L45">  private String base = null;</span>
+<span class="fc" id="L46">  private Set&lt;String&gt; checkedUrls = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L47">  private Set&lt;String&gt; goodLinks = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L48">  private Set&lt;String&gt; badLinks = new HashSet&lt;&gt;();</span>
+
+  private StorageService storage;
+
+  public PageCrawler(StorageService storage) {
+<span class="nc" id="L53">    this(storage, 50);</span>
+<span class="nc" id="L54">  }</span>
+
+<span class="fc" id="L56">  public PageCrawler(StorageService storage, int maxEmails) {</span>
+<span class="fc" id="L57">    this.storage = storage;</span>
+<span class="fc" id="L58">    this.maxEmails = maxEmails;</span>
+<span class="fc" id="L59">  }</span>
+
+  public void crawl(String url) {
+
+<span class="fc bfc" id="L63" title="All 2 branches covered.">    if (emails.size() &gt;= maxEmails) {</span>
+<span class="fc" id="L64">      return;</span>
+    }
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    if (base == null) {</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">      if (url.startsWith(&quot;http&quot;)) {</span>
+<span class="fc" id="L68">        base = url;</span>
+      } else {
+<span class="fc" id="L70">        base = &quot;&quot;;</span>
+      }
+    }
+<span class="fc" id="L73">    Document doc = null;</span>
+    try {
+<span class="fc" id="L75">       checkedUrls.add(url);</span>
+<span class="fc" id="L76">       doc = fetcher.get(url);</span>
+<span class="nc" id="L77">    } catch (Exception e) {</span>
+<span class="nc" id="L78">      badLinks.add(url);</span>
+<span class="nc" id="L79">      System.out.println(e.getMessage());</span>
+<span class="nc" id="L80">      return;</span>
+<span class="fc" id="L81">    }</span>
+<span class="fc" id="L82">    goodLinks.add(url);</span>
+<span class="fc" id="L83">    Set&lt;String&gt; newEmails = parser.findEmails(doc);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">    if (newEmails.size() &gt; 0) {</span>
+<span class="fc" id="L85">      emails.addAll(newEmails);</span>
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">      if (emails.size() &gt;= maxEmails) {</span>
+<span class="fc" id="L87">        System.out.println(&quot;finished!&quot;);</span>
+<span class="fc" id="L88">        return;</span>
+      }
+    }
+<span class="fc" id="L91">    Set&lt;String&gt; urls = parser.findLinks(doc);</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">    if (urls.size() &gt; 0) {</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">      for (String newUrl : urls) {</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">        if (! checkedUrls.contains((newUrl))) {</span>
+<span class="fc" id="L95">          checkedUrls.add(newUrl);</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">          if (newUrl.startsWith(&quot;http&quot;)) {</span>
+<span class="fc" id="L97">            crawl(newUrl);</span>
+          } else {
+<span class="nc" id="L99">            crawl(base + newUrl);</span>
+          }
+        }
+<span class="fc" id="L102">      }</span>
+    }
+<span class="fc" id="L104">    System.out.println(emails.size());</span>
+<span class="fc" id="L105">  }</span>
+
+  public void report() {
+<span class="fc" id="L108">    storage.storeList(EMAIL, emails);</span>
+<span class="fc" id="L109">    storage.storeList(GOODLINKS, goodLinks);</span>
+<span class="fc" id="L110">    storage.storeList(BADLINKS, badLinks);</span>
+<span class="fc" id="L111">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

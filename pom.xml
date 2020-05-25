@@ -1,6 +1,6 @@
-  <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.depaul</groupId>
   <artifactId>email-finder</artifactId>
@@ -31,6 +31,30 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-launcher</artifactId>
+      <version>${platform.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-runner</artifactId>
+      <version>${platform.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>${logback.version}</version>
@@ -55,21 +79,45 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.2</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
         <!-- executes junit tests -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire.version}</version>
       </plugin>
+
       <plugin>
         <!-- Produces 2 kinds of outputs:
              1. a 'fat' jar which contains this app as well as its dependencies
              2. a ZIP file containing the source code
         -->
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>${assembler.version}</version>
+        <version>3.1.0</version>
         <configuration>
-          <finalName>email-finder</finalName>
+          <finalName>jyoukhana-email-finder</finalName>
           <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>src/assembly/assembly.xml</descriptor>
+          </descriptors>
           <descriptorRefs>
             <descriptorRef>src</descriptorRef>
             <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -83,7 +131,7 @@
         <executions>
           <execution>
             <id>make-assembly</id>
-            <phase>package</phase>
+            <phase>verify</phase>
             <goals>
               <goal>single</goal>
             </goals>
