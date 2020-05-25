@@ -32,7 +32,7 @@ public class EmailFinderTest {
             String res = txtLines.collect(Collectors.joining(System.lineSeparator()));
             assertEquals(res, "validURL.txt");
         } catch(IOException e){
-            e.printStackTrace();
+            throw new EmailFinderException("Invalid URL", e);
         }
     }
 
@@ -48,7 +48,7 @@ public class EmailFinderTest {
             String res = txtLines.collect(Collectors.joining(System.lineSeparator()));
             assertEquals(res, "");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new EmailFinderException("error", e);
         }
     }
 }
