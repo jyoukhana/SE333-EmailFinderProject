@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="edu.depaul.email.ListWriterTest" time="0.276" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="edu.depaul.email.ListWriterTest" time="0.146" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre/lib"/>
-    <property name="sun.java.command" value="/Users/johnyoukhana/Desktop/SE333-EmailFinderProject/target/surefire/surefirebooter3644043618609554669.jar /Users/johnyoukhana/Desktop/SE333-EmailFinderProject/target/surefire 2020-05-25T18-18-40_716-jvmRun1 surefire6436502380605953642tmp surefire_02755033312298312367tmp"/>
+    <property name="sun.java.command" value="/Users/johnyoukhana/Desktop/SE333-EmailFinderProject/target/surefire/surefirebooter8470064719634828123.jar /Users/johnyoukhana/Desktop/SE333-EmailFinderProject/target/surefire 2020-05-25T19-03-09_218-jvmRun1 surefire2896808688793988380tmp surefire_02641853374546574390tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="surefire.test.class.path" value="/Users/johnyoukhana/Desktop/SE333-EmailFinderProject/target/test-classes:/Users/johnyoukhana/Desktop/SE333-EmailFinderProject/target/classes:/Users/johnyoukhana/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.1/junit-jupiter-api-5.6.1.jar:/Users/johnyoukhana/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/johnyoukhana/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/johnyoukhana/.m2/repository/org/junit/platform/junit-platform-commons/1.6.1/junit-platform-commons-1.6.1.jar:/Users/johnyoukhana/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.1/junit-jupiter-engine-5.6.1.jar:/Users/johnyoukhana/.m2/repository/org/junit/platform/junit-platform-engine/1.6.1/junit-platform-engine-1.6.1.jar:/Users/johnyoukhana/.m2/repository/org/junit/vintage/junit-vintage-engine/5.6.1/junit-vintage-engine-5.6.1.jar:/Users/johnyoukhana/.m2/repository/junit/junit/4.13/junit-4.13.jar:/Users/johnyoukhana/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/johnyoukhana/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.6.1/junit-jupiter-params-5.6.1.jar:/Users/johnyoukhana/.m2/repository/org/junit/platform/junit-platform-launcher/1.6.1/junit-platform-launcher-1.6.1.jar:/Users/johnyoukhana/.m2/repository/org/junit/platform/junit-platform-runner/1.6.1/junit-platform-runner-1.6.1.jar:/Users/johnyoukhana/.m2/repository/org/junit/platform/junit-platform-suite-api/1.6.1/junit-platform-suite-api-1.6.1.jar:/Users/johnyoukhana/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/Users/johnyoukhana/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/Users/johnyoukhana/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/Users/johnyoukhana/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.0/httpclient5-5.0.jar:/Users/johnyoukhana/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.0/httpcore5-5.0.jar:/Users/johnyoukhana/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.0/httpcore5-h2-5.0.jar:/Users/johnyoukhana/.m2/repository/commons-codec/commons-codec/1.13/commons-codec-1.13.jar:/Users/johnyoukhana/.m2/repository/org/apache/httpcomponents/client5/httpclient5-fluent/5.0/httpclient5-fluent-5.0.jar:/Users/johnyoukhana/.m2/repository/org/jsoup/jsoup/1.13.1/jsoup-1.13.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/johnyoukhana/Desktop/SE333-EmailFinderProject/target/surefire/surefirebooter3644043618609554669.jar:/Users/johnyoukhana/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar"/>
+    <property name="surefire.real.class.path" value="/Users/johnyoukhana/Desktop/SE333-EmailFinderProject/target/surefire/surefirebooter8470064719634828123.jar:/Users/johnyoukhana/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar"/>
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
@@ -62,5 +62,5 @@
     <property name="java.class.version" value="52.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="testWriter" classname="edu.depaul.email.ListWriterTest" time="0.205"/>
+  <testcase name="testWriter" classname="edu.depaul.email.ListWriterTest" time="0.089"/>
 </testsuite>

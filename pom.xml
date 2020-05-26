@@ -118,10 +118,10 @@
           <descriptors>
             <descriptor>src/assembly/assembly.xml</descriptor>
           </descriptors>
-          <descriptorRefs>
-            <descriptorRef>src</descriptorRef>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
+<!--          <descriptorRefs>-->
+<!--            <descriptorRef>src</descriptorRef>-->
+<!--            <descriptorRef>jar-with-dependencies</descriptorRef>-->
+<!--          </descriptorRefs>-->
           <archive>
             <manifest>
               <mainClass>edu.depaul.email.EmailFinder</mainClass>
