@@ -1,2 +1,6 @@
+edu/depaul/email/PageParserTest.class
+edu/depaul/email/PageCrawlerTest.class
 edu/depaul/email/ListWriterTest.class
+edu/depaul/email/PageFetcherTest.class
 edu/depaul/email/EmailFinderTest.class
+edu/depaul/email/StorageServiceTest.class

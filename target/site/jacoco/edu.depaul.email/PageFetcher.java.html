@@ -29,8 +29,8 @@ public class PageFetcher {
 
   public String getString(String url) {
     try {
-<span class="nc" id="L32">    Document doc = Jsoup.connect(url).get();</span>
-<span class="nc" id="L33">    return doc.outerHtml();</span>
+<span class="fc" id="L32">    Document doc = Jsoup.connect(url).get();</span>
+<span class="fc" id="L33">    return doc.outerHtml();</span>
 <span class="nc" id="L34">    } catch (IOException e) {</span>
 <span class="nc" id="L35">      throw new EmailFinderException(&quot;unable to fetch &quot; + url, e);</span>
 <span class="nc" id="L36">    } catch (IllegalArgumentException e) {</span>
@@ -45,8 +45,8 @@ public class PageFetcher {
       } else {
 <span class="fc" id="L46">        return getFromFile(url);</span>
       }
-<span class="nc" id="L48">    } catch (IOException e) {</span>
-<span class="nc" id="L49">      throw new EmailFinderException(&quot;unable to fetch &quot; + url, e);</span>
+<span class="fc" id="L48">    } catch (IOException e) {</span>
+<span class="fc" id="L49">      throw new EmailFinderException(&quot;unable to fetch &quot; + url, e);</span>
 <span class="nc" id="L50">    } catch (IllegalArgumentException e) {</span>
 <span class="nc" id="L51">      throw new EmailFinderException(&quot;Invalid URL &quot; + url, e);</span>
     }

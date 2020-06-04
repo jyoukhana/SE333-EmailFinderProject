@@ -7,6 +7,7 @@ package edu.depaul.email;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.Collection;
 
 /**
@@ -24,7 +25,7 @@ public class ListWriter {
 
   public void writeList(Collection<String> aList) throws IOException {
     for (String item : aList) {
-      output.write(item.getBytes());
+      output.write(item.getBytes(Charset.forName("UTF-8")));
       output.write(newLine);
     }
   }

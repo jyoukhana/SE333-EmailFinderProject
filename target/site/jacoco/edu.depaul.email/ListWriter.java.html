@@ -7,6 +7,7 @@ package edu.depaul.email;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.Collection;
 
 /**
@@ -16,17 +17,17 @@ import java.util.Collection;
 public class ListWriter {
 
   private final OutputStream output;
-<span class="fc" id="L19">  private byte[] newLine = {'\n'};</span>
+<span class="fc" id="L20">  private byte[] newLine = {'\n'};</span>
 
-<span class="fc" id="L21">  public ListWriter(OutputStream output) {</span>
-<span class="fc" id="L22">    this.output = output;</span>
-<span class="fc" id="L23">  }</span>
+<span class="fc" id="L22">  public ListWriter(OutputStream output) {</span>
+<span class="fc" id="L23">    this.output = output;</span>
+<span class="fc" id="L24">  }</span>
 
   public void writeList(Collection&lt;String&gt; aList) throws IOException {
-<span class="fc bfc" id="L26" title="All 2 branches covered.">    for (String item : aList) {</span>
-<span class="fc" id="L27">      output.write(item.getBytes());</span>
-<span class="fc" id="L28">      output.write(newLine);</span>
-<span class="fc" id="L29">    }</span>
-<span class="fc" id="L30">  }</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">    for (String item : aList) {</span>
+<span class="fc" id="L28">      output.write(item.getBytes(Charset.forName(&quot;UTF-8&quot;)));</span>
+<span class="fc" id="L29">      output.write(newLine);</span>
+<span class="fc" id="L30">    }</span>
+<span class="fc" id="L31">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

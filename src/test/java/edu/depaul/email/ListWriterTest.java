@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ListWriterTest {
 
@@ -32,6 +32,7 @@ public class ListWriterTest {
             testWriter.writeList(testList);
             assertEquals(testStr, testStream.toString());
         } catch(Exception e){
+
             throw new EmailFinderException("Invalid list", e);
         }
 

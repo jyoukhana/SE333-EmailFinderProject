@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="mockito-generator">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/mockito-generator/lib/mockito-generator.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/mockito-generator/lib/mockito-all-1.10.19.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/mockito-generator/lib/guava-17.0-rc2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/mockito-generator/lib/mockito-all-1.10.19.jar!/" />
+    </SOURCES>
+  </library>
+</component>
